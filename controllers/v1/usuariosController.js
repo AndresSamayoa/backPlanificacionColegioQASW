@@ -1,5 +1,3 @@
-const { notFoundError } = require("../../errors");
-const { auth_resource_read } = require("../../services/v1/authService");
 const usuariosService = require("../../services/v1/usuariosService");
 
 module.exports = {

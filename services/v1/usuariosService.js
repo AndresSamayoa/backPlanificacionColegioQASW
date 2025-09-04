@@ -3,7 +3,7 @@ const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {
   async create ({names, phone, user, password, admin, active}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_crear_usuario (:Names, :Phone, :User, :Password, :Admin, :Active, null, null)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_crear_usuario (:Names, :Phone, :User, :Password, :Active, :Admin, null, null)',
       {replacements: {Names: names, Phone: phone, User: user, Password: password, Admin: admin, Active: active}}
     );
 
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   async update (id, {names, phone, user, password, admin, active}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_update_usuario (:Id, :Names, :Phone, :User, :Password, :Admin, :Active, null, null)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_update_usuario (:Id, :Names, :Phone, :User, :Password, :Active, :Admin, null, null)',
       {replacements: {Id: id, Names: names || null, Phone: phone || null, User: user || null, Password: password || null, Admin: admin, Active: active}}
     );
 

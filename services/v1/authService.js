@@ -3,7 +3,7 @@ const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {
   login: async(user, password) => {
-    const [[{p_token: token, p_user: userId, p_status: status, p_message: message}]] = await mainDB.query('call pas_login(:Pass, :User, null, null, null, null);',
+    const [[{p_token: token, p_usuario_id: userId, p_status: status, p_message: message}]] = await mainDB.query('call pas_login(:Pass, :User, null, null, null, null);',
       { replacements: {Pass: password, User: user} }
     );
 
