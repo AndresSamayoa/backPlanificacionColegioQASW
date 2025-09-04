@@ -3,7 +3,7 @@ const authService = require("../../services/v1/authService");
 module.exports = {
   login: async (req, res, next)=>{
     try {
-      const hash = await authService.login(req.body.email, req.body.password);
+      const hash = await authService.login(req.body.user, req.body.password);
 
       return res.status(200).send(hash);
     } catch (error) {
