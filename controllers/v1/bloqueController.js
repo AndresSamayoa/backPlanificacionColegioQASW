@@ -52,7 +52,7 @@ module.exports = {
 
   search: async (req, res, next)=>{
     try {
-      let data = await bloqueService.search(req.params.param);
+      let data = await bloqueService.search(req.query.fechainicio, req.query.fechafin);
 
       return res.status(200).send(data);
     } catch (error) {
