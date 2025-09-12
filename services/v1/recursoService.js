@@ -3,7 +3,7 @@ const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {    
   async create ({recursonombre}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_crear_recurso (:Recursonombre)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_crear_recurso (:Recursonombre, null, null)',
       {replacements: {Recursonombre: recursonombre}}
     );
 
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   async update (id, {recursonombre}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_update_recurso (:Idrecurso, :Recursonombre)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_update_recurso (:Idrecurso, :Recursonombre, null, null)',
       {replacements: {Idrecurso: id, Recursonombre: recursonombre || null}}
     );
 
@@ -20,7 +20,7 @@ module.exports = {
 
 
   async delete (id) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_delete_recurso (:Idrecurso)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_delete_recurso (:Idrecurso, null, null)',
       {replacements: {Idrecurso: id}}
     );
 

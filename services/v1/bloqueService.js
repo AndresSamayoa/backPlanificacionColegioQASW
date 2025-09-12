@@ -3,7 +3,7 @@ const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {    
   async create ({fechainicio, fechafin}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_crear_bloque (:Fechainicio, :Fechafin)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_crear_bloque (:Fechainicio, :Fechafin, null, null)',
       {replacements: {Fechainicio: fechainicio, Fechafin:fechafin}}
     );
 
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   async update (id, {fechainicio, fechafin}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call  p_update_bloque (:Bloqueid, :Fechainicio, :Fechafin)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call  p_update_bloque (:Bloqueid, :Fechainicio, :Fechafin, null, null)',
       {replacements: {Bloqueid:id, Fechainicio: fechainicio|| null, Fechafin: fechafin || null}}
     );
 
@@ -20,7 +20,7 @@ module.exports = {
 
 
   async delete (id) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_delete_bloque (:Bloqueid)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_delete_bloque (:Bloqueid, null, null)',
       {replacements: {Bloqueid: id}}
     );
 

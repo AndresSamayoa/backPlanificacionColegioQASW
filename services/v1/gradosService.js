@@ -3,7 +3,7 @@ const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {    
   async create ({gradonombre}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_crear_grados (:Gradonombre)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_crear_grados (:Gradonombre, null, null)',
       {replacements: {Gradonombre: gradonombre}}
     );
 
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   async update (id, {gradonombre}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_update_grado (:Idgrado, :Gradonombre)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_update_grado (:Idgrado, :Gradonombre, null, null)',
       {replacements: {Idgrado: id, Gradonombre: gradonombre || null}}
     );
 
@@ -20,7 +20,7 @@ module.exports = {
 
 
   async delete (id) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_delete_grado (:Idgrado)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_delete_grado (:Idgrado, null, null)',
       {replacements: {Idgrado: id}}
     );
 

@@ -1,4 +1,4 @@
-const gradoService = require("../../services/v1/gradoService");
+const gradoService = require("../../services/v1/gradosService");
 
 module.exports = {
   create: async (req, res, next)=>{
