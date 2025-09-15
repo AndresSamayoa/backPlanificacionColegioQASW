@@ -36,7 +36,6 @@ module.exports = {
 
     return data;
   },
-
   
   async getOne1 (id) {
     let [data] = await mainDB.query('select * from fas_usuario_roles(:Rol_usuario);',
@@ -47,7 +46,6 @@ module.exports = {
 
     return data;
   },
-
 
   async search (param) {
     let [data] = await mainDB.query('select * from  fas_get_rol(:Param);',

@@ -11,7 +11,7 @@ module.exports = {
   },
 
   async update (id, {nombrecurso, gradoid}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_update_grado (:Cursoid, :Nombrecurso, :Gradoid, null, null)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_update_curso (:Cursoid, :Nombrecurso, :Gradoid, null, null)',
       {replacements: {Cursoid:id, Nombrecurso: nombrecurso|| null, Gradoid: gradoid || null}}
     );
 
