@@ -12,6 +12,38 @@ module.exports = {
     }
   },*/
 
+planAprobar: async (req, res, next)=>{
+    try {
+      await planiService.planAprobar(req.body);
+
+      return res.status(200).send({message: 'aprobado con exito.'});
+    } catch (error) {
+      next(error);
+    }
+  },
+
+planrechazar: async (req, res, next)=>{
+    try {
+      await planiService.planrechazar(req.body);
+
+      return res.status(200).send({message: 'Rechazado.'});
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  planagregardetalle: async (req, res, next)=>{
+    try {
+      await planiService.planagregardetalle(req.body);
+
+      return res.status(200).send({message: 'Agregado correctamente .'});
+    } catch (error) {
+      next(error);
+    }
+  },
+
+
+  
   update: async (req, res, next)=>{
     try {
       await planiService.update(req.params.id, req.body);
@@ -32,7 +64,7 @@ module.exports = {
     }
   },
 
-  deletep: async (req, res, next)=>{
+  deletepla: async (req, res, next)=>{
     try {
       await planiService.delete(req.params.id, req.params.ptipo,  req.params.pid );
 

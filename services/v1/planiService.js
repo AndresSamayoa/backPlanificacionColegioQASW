@@ -1,14 +1,30 @@
+const { planagregardetalle } = require('../../controllers/v1/planiController');
 const { badRequestError, notFoundError } = require('../../errors');
 const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {    
-  /*async create ({recursonombre}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call p_crear_recurso (:Recursonombre, null, null)',
-      {replacements: {Recursonombre: recursonombre}}
-    );
 
+async planAprobar({ pplanificacion_id, pusuario_id }) { 
+    const [[{ p_status: status, p_message: message }]] = await mainDB.query( 'call pas_aprobar_planificacion (:Pplanificacion_id, :Pusuario_id, null, null)',
+    {replacements: { Pplanificacion_id: pplanificacion_id, Pusuario_id: pusuario_id }}
+  );
     if(!status) throw badRequestError(message)
-  },*/
+},
+
+async planrechazar({ pplanificacion_id, pusuario_id, pcomentario }) { 
+    const [[{ p_status: status, p_message: message }]] = await mainDB.query( 
+      'call pas_rechazar_planificacion (:Pplanificacion_id, :Pusuario_id, Pcomentario,null, null)',
+    {replacements: { Pplanificacion_id: pplanificacion_id, Pusuario_id: pusuario_id , Pcomentario:pcomentario }}
+  );
+    if(!status) throw badRequestError(message)
+},
+
+async planagregardetalle({pplanificacion_id , ptipo , pdatos }) { 
+    const [[{ p_status: status, p_message: message }]] = await mainDB.query('call pas_agregar_planificacion_detalle (:Pplanificacion_id , :Ptipo , :Pdatos,null, null)',
+    {replacements: {Pplanificacion_id: pplanificacion_id , Ptipo: ptipo , Pdatos: pdatos }}
+  );
+    if(!status) throw badRequestError(message)
+},
 
  async update (id, {ptipo, pid, pdescripcion}) {
     const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_actualizar_planificacion_detalle (:Id, :Ptipo, Pid, Pdescripcion, null, null)',
