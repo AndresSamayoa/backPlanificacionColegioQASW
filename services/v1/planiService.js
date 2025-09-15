@@ -43,7 +43,7 @@ async planagregardetalle({pplanificacion_id , ptipo , pdatos }) {
     if(!status) throw badRequestError(message)
   },
 
-    async deletep (id , {ptipo,pid}) {
+    async deleteplanidetalle (id , {ptipo,pid}) {
     const [[{p_status: status, p_message: message}]] = await mainDB.query    ('call pas_eliminar_planificacion_detalle (:Planificacion_id, :Ptipo, :Pid, null, null)',
       {replacements: {Planificacion_id: id, Ptipo:ptipo,  Pid:pid }}
     );

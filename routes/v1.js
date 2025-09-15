@@ -84,7 +84,7 @@ app.post('/planificacion/rechazar/:id', auth, planiController.planrechazar);
 app.post('/planificacion/agregardetalle', auth, planiController.planagregardetalle);
 app.put('/planificacion/:id', auth, planiController.update);
 app.delete('/planificacion/:id',auth,  planiController.delete);
-app.delete('/planificacion/:id',auth,  planiController.deletepla);
+app.delete('/planificacion/eliminardetalle/:id',auth,  planiController.deleteplanidetalle);
 app.get('/planificacion/:id',auth,  planiController.getOne);
 
 module.exports = app;
