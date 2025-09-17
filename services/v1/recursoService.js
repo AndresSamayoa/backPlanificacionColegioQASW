@@ -46,4 +46,14 @@ module.exports = {
 
     return data;
   },
+
+async  validarDisponibilidadRecurso({ precurso_id, pfecha, phora_inicio, phora_fin }) {
+    let [data] = await mainDB.query( 'select from * fas_validate_resourse_aviable(:Precurso_id, :Pfecha, :Phora_inicio, :Phora_fin);',
+      { replacements: { Precurso_id: precurso_id, Pfecha: pfecha, Phora_inicio: phora_inicio, Phora_fin: phora_fin }}
+    );
+     if(data.length < 1) throw notFoundError('Recurso No Encontrado');
+
+    return data;
+  }
+
 }

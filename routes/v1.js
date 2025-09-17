@@ -85,7 +85,7 @@ app.post('/planificacion/rechazar/:id', auth, planiController.planrechazar);
 app.post('/planificacion/:id/detalle', auth, planiController.planagregardetalle);
 app.put('/planificacion/:id', auth, planiController.update);
 app.delete('/planificacion/:id',auth,  planiController.delete);
-app.delete('/planificacion/:id/detalle',auth,  planiController.deletepla);
+app.delete('/planificacion/:id/detalle',auth, planiController.deleteplanidetalle);
 app.get('/planificacion/day/:param',auth,  planiController.getDay);
 app.get('/planificacion/:id',auth,  planiController.getOne);
 

@@ -64,9 +64,9 @@ planrechazar: async (req, res, next)=>{
     }
   },
 
-  deletepla: async (req, res, next)=>{
+  deleteplanidetalle: async (req, res, next)=>{
     try {
-      await planiService.deletep(req.params.id, req.body );
+      await planiService.deletep(req.params.id, req.params.ptipo,  req.params.pid );
 
       return res.status(200).send({message: ' eliminado correctamente'});
     } catch (error) {
