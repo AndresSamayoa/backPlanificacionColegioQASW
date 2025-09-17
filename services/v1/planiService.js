@@ -17,9 +17,9 @@ async create({ tipo, horario, fecha, fecha_inicio, fecha_fin, contenidos, evalua
   if(!status) throw badRequestError(message)
 },
 
-async planAprobar(pplanificacion_id, {pusuario_id }) { 
-    const [[{ p_status: status, p_message: message }]] = await mainDB.query( 'call pas_aprobar_planificacion (:Pplanificacion_id, :Pusuario_id, null, null)',
-    {replacements: { Pplanificacion_id: pplanificacion_id, Pusuario_id: pusuario_id }}
+async planAprobar(pplanificacion_id, {pusuario_id, pcomentario }) { 
+    const [[{ p_status: status, p_message: message }]] = await mainDB.query( 'call pas_aprobar_planificacion (:Pplanificacion_id, :Pcomentario, :Pusuario_id, null, null)',
+    {replacements: { Pplanificacion_id: pplanificacion_id, Pusuario_id: pusuario_id, Pcomentario:pcomentario }}
   );
     if(!status) throw badRequestError(message)
 },
