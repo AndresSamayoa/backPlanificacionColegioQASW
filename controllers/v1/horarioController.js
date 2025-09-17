@@ -33,9 +33,9 @@ module.exports = {
 
   getOne: async (req, res, next)=>{
     try {
-      let data = await horarioService.getOne(req.params.id);
+      let data = await horarioService.getOne(req.params.id, req.query.fecha_inicio, req.query.fecha_fin);
 
-      return res.status(200).send(data[0]);
+      return res.status(200).send(data);
     } catch (error) {
       next(error);
     }
@@ -43,7 +43,7 @@ module.exports = {
 
   search: async (req, res, next)=>{
     try {
-      let data = await horarioService.search(req.params.param);
+      let data = await horarioService.search(req.params.param, req.query.fecha_inicio, req.query.fecha_fin);
 
       return res.status(200).send(data);
     } catch (error) {

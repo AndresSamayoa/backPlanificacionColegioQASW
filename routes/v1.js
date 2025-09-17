@@ -50,8 +50,8 @@ app.get('/curso/search/:param',auth,  cursoController.search);
 app.post('/bloque',auth, bloqueController.create);
 app.put('/bloque/:id', auth, bloqueController.update);
 app.delete('/bloque/:id',auth,  bloqueController.delete);
+app.get('/bloque/search',auth,  bloqueController.search);
 app.get('/bloque/:id',auth,  bloqueController.getOne);
-app.get('/bloque/search/:param',auth,  bloqueController.search);
 
 app.post('/evaluacion',auth, evaluacionController.create);
 app.put('/evaluacion/:id',auth,  evaluacionController.update);
@@ -79,12 +79,14 @@ app.get('/asignacion/:id', auth, asignacionController.getOne);
 app.get('/asignacion/search/:param',auth,  asignacionController.search);
 
 
+app.post('/planificacion', auth, planiController.create);
 app.post('/planificacion/aprobar/:id', auth, planiController.planAprobar);
 app.post('/planificacion/rechazar/:id', auth, planiController.planrechazar);
-app.post('/planificacion/agregardetalle', auth, planiController.planagregardetalle);
+app.post('/planificacion/:id/detalle', auth, planiController.planagregardetalle);
 app.put('/planificacion/:id', auth, planiController.update);
 app.delete('/planificacion/:id',auth,  planiController.delete);
-app.delete('/planificacion/:id',auth,  planiController.deletepla);
+app.delete('/planificacion/:id/detalle',auth,  planiController.deletepla);
+app.get('/planificacion/day/:param',auth,  planiController.getDay);
 app.get('/planificacion/:id',auth,  planiController.getOne);
 
 module.exports = app;
