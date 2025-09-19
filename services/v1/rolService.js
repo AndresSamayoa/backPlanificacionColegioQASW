@@ -3,7 +3,7 @@ const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {    
   async create ({usuario_id, tipo}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_create_rol  (:Usuario_id, :Tipo)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_create_rol  (:Usuario_id, :Tipo, null, null)',
       {replacements: {Usuario_id: usuario_id, Tipo:tipo}}
     );
 
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   async update (id, {tipo}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_update_rol (:Rol_id,  :Tipo)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_update_rol (:Rol_id,  :Tipo, null, null)',
       {replacements: {Rol_id:id, Tipo: tipo|| null}}
     );
 
@@ -20,7 +20,7 @@ module.exports = {
 
 
   async delete (id) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call  pas_delete_rol (:Rol_id)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call  pas_delete_rol (:Rol_id, null, null)',
       {replacements: {Rol_id: id}}
     );
 
