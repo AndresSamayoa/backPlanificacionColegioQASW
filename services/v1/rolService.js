@@ -28,7 +28,7 @@ module.exports = {
   },
 
   async getOne (id) {
-    let [data] = await mainDB.query('select * from fas_buscar_roles(:Rol_id);',
+    let [data] = await mainDB.query('select * from fas_get_rol(:Rol_id);',
       {replacements: {Rol_id: id}}
     );
 
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   async search (param) {
-    let [data] = await mainDB.query('select * from  fas_get_rol(:Param);',
+    let [data] = await mainDB.query('select * from fas_buscar_roles(:Param);',
       {replacements: {Param: param}}
     );
 
