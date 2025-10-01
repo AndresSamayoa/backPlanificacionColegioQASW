@@ -1,4 +1,4 @@
-const { notAuthorizedError } = require('../../errors');
+const { notAuthorizedError, forbiddenError } = require('../../errors');
 const { _main: mainDB } = require('../../loaders/postgres');
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
     );
 
     if (!status) {
-      throw notAuthorizedError(message)
+      throw forbiddenError(message)
     }
 
     return {token, userId};
