@@ -23,7 +23,7 @@ module.exports = {
 
   delete: async (req, res, next)=>{
     try {
-      await asignacionService.delete(req.params.asignacion_id);
+      await asignacionService.delete(req.params.id);
 
       return res.status(200).send({message: ' eliminado correctamente'});
     } catch (error) {
