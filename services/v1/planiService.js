@@ -42,7 +42,7 @@ async planagregardetalle(pplanificacion_id, {ptipo , pdatos }) {
 },
 
  async update (id, {ptipo, pid, pdescripcion}) {
-    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_actualizar_planificacion_detalle (:Id, :Ptipo, Pid, Pdescripcion, null, null)',
+    const [[{p_status: status, p_message: message}]] = await mainDB.query('call pas_actualizar_planificacion_detalle (:Id, :Ptipo, :Pid, :Pdescripcion, null, null)',
       {replacements: {Id: id, Ptipo: ptipo || null , Pid: pid || null, Pdescripcion: pdescripcion || null}}
     );
 
