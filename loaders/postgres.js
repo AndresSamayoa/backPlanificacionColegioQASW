@@ -23,8 +23,10 @@ const _main = new sequelize(dbMainDatabase, dbMainUsername, dbMainPassword, {
     idle: 10000
   },
   dialectOptions: {
-    statement_timeout: 60000
-  }
+    statement_timeout: 60000,
+    useUTC: false,
+  },
+  timezone: '-06:00'
 });
 
 exports._main = _main;
